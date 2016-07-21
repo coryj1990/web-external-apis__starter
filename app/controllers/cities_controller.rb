@@ -33,7 +33,7 @@ MyApp.get "/SanFran" do
 @spotday = thedayspot
 @spothour = thetimespot
 @place = "San Francisco"
-@weather_info = Weather("37.7749, -122.4194")
+@weather_info = Weather("37.7749,-122.4194")
 
 @currenttemp = currenttemperature(@weather_info)
 @currentsum = currentsum(@weather_info)
@@ -50,7 +50,7 @@ MyApp.get "/Omaha" do
 @spotday = thedayspot
 @spothour = thetimespot
 @place = "Omaha"
-@weather_info = HTTParty.get('https://api.forecast.io/forecast/#{API_KEY]/41.2524,-95.9980')
+@weather_info = Weather("41.2524,-95.9980")
 
 @currenttemp = currenttemperature(@weather_info)
 @currentsum = currentsum(@weather_info)
@@ -68,7 +68,7 @@ MyApp.get "/Mumbai" do
 @spotday = thedayspot
 @spothour = thetimespot
 @place = "Mumbai"
-@weather_info = HTTParty.get('https://api.forecast.io/forecast/#{API_KEY}/19.0760,72.8777')
+@weather_info = Weather("19.0760,72.8777")
 
 @currenttemp = currenttemperature(@weather_info)
 @currentsum = currentsum(@weather_info)

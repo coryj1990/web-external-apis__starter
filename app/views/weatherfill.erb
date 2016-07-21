@@ -1,0 +1,165 @@
+<p><a href="/">Back To City List</a></p>
+<div class="city-detail">
+  <section class="city-header">
+    <h2><%= @place %></h2>
+    <h4><%= @currentsum %></h4>
+    <h1><%= @currenttemp %></h1>
+  </section>
+
+  <section class="today">
+    <ul class="today-overview">
+      <li><%= @nowday %></li>
+      <li></li>
+      <li>62˚</li>
+      <li>46˚</li>
+    </ul>
+
+    <div class="today-hourly-list-container">
+      <ul class="today-hourly-list" style="width: 1536px;">
+        
+      <% j=0
+      while j < 24 %>
+
+        <li>
+          <ul>
+            <li> <% 
+            if j == 0
+              %>Now<%
+              j += 1
+            else
+              %><%= @hours[(@spothour - 24 + j)]%><%
+              j += 1
+            end %>
+            </li>
+            
+            <li> <%=
+              @hourlyinfo[j]["temperature"] %>
+            </li>
+          </ul>
+        </li>
+        
+        <% end %>
+
+      </ul>
+    </div>
+  </section>
+
+  <section class="forecast">
+    <ul class="forecast-list">
+      <% i = 0
+      while i < 7 %>
+
+      <li>
+        <ul>
+          <li>
+            <%= @days[(@spotday - 7 + i)] %>
+          </li>
+          
+          <li>
+            <%= @dailyinfo[i]["temperatureMax"] %>
+          </li>
+          <li>
+            <%= @dailyinfo[i]["temperatureMin"] %>
+          </li>
+        </ul>
+      </li>
+      
+      <% i += 1
+      end %>
+
+    </ul>
+  </section>
+
+  <section class="today-details">
+    <p class="today-summary"><%= @weather_info["daily"]["summary"] %></p>
+
+    <ul class="today-details-list">
+      <li>
+        <ul>
+          <li>Sunrise:</li>
+          <li>
+          <% 
+            totalsec = @dailyinfo[0]["sunriseTime"]%86400
+            sunrtime = Time.at(totalsec).strftime("%I:%M") 
+            %><%= sunrtime %> AM
+
+          </li>
+        </ul>
+      </li>
+      <li>
+        <ul>
+          <li>Sunset:</li>
+          <li>
+            <% 
+            totalsecs = @dailyinfo[0]["sunsetTime"]%86400
+            sunstime = Time.at(totalsecs).strftime("%I:%M") 
+            %><%= sunstime %> PM
+          </li>
+        </ul>
+      </li>
+      <li>
+      </li>
+      <li>
+        <ul>
+          <li>Chance of Rain:</li>
+          <li>
+            <%= @dailyinfo[0]["precipProbability"] %>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <ul>
+          <li>Humidity:</li>
+          <li>
+            <%= @dailyinfo[0]["humidity"] %>
+          </li>
+        </ul>
+      </li>
+      <li>
+      </li>
+      <li>
+        <ul>
+          <li>Wind:</li>
+          <li>1 mph NW</li>
+        </ul>
+      </li>
+      <li>
+        <ul>
+          <li>Feels like:</li>
+          <li>
+            <%= @hourlyinfo[0]["apparentTemperature"] %>
+          </li>
+        </ul>
+      </li>
+      <li>
+      </li>
+      <li>
+        <ul>
+          <li>Precipitation:</li>
+          <li>
+          <%= @hourlyinfo[0]["precipIntensity"] %>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <ul>
+          <li>Pressure:</li>
+          <li>
+            <%= @hourlyinfo[0]["pressure"] %> barr
+          </li>
+        </ul>
+      </li>
+      <li>
+      </li>
+      <li>
+        <ul>
+          <li>Visibility:</li>
+          <li>
+          <%= @hourlyinfo[0]["visibility"] %> mi
+
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>

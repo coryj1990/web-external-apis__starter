@@ -6,3 +6,5 @@ coverage/index.html
 coverage/.resultset*
 .env
 public/uploads
+
+web-external-apis_starter/app/controllers/thegoodies.rb
